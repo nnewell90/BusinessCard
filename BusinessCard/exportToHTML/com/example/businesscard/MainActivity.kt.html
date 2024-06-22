@@ -1,0 +1,172 @@
+<html>
+<head>
+<title>MainActivity.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">businesscard</span>
+
+<span class="s1">import android</span><span class="s2">.</span><span class="s1">graphics</span><span class="s2">.</span><span class="s1">Bitmap</span>
+<span class="s1">import android</span><span class="s2">.</span><span class="s1">os</span><span class="s2">.</span><span class="s1">Bundle</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">activity</span><span class="s2">.</span><span class="s1">ComponentActivity</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">activity</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">setContent</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">Image</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.</span><span class="s1">Arrangement</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.</span><span class="s1">Box</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.</span><span class="s1">Column</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.</span><span class="s1">Spacer</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.</span><span class="s1">fillMaxSize</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.</span><span class="s1">height</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.</span><span class="s1">padding</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.</span><span class="s1">size</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material3</span><span class="s2">.</span><span class="s1">MaterialTheme</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material3</span><span class="s2">.</span><span class="s1">Surface</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material3</span><span class="s2">.</span><span class="s1">Text</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">runtime</span><span class="s2">.</span><span class="s1">Composable</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">Alignment</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">Modifier</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">graphics</span><span class="s2">.</span><span class="s1">asImageBitmap</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">graphics</span><span class="s2">.</span><span class="s1">graphicsLayer</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.</span><span class="s1">ContentScale</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.</span><span class="s1">layout</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">res</span><span class="s2">.</span><span class="s1">painterResource</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">tooling</span><span class="s2">.</span><span class="s1">preview</span><span class="s2">.</span><span class="s1">Preview</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">unit</span><span class="s2">.</span><span class="s1">dp</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">unit</span><span class="s2">.</span><span class="s1">sp</span>
+<span class="s1">import com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">businesscard</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">theme</span><span class="s2">.</span><span class="s1">BusinessCardTheme</span>
+<span class="s1">import com</span><span class="s2">.</span><span class="s1">google</span><span class="s2">.</span><span class="s1">zxing</span><span class="s2">.</span><span class="s1">BarcodeFormat</span>
+<span class="s1">import com</span><span class="s2">.</span><span class="s1">google</span><span class="s2">.</span><span class="s1">zxing</span><span class="s2">.</span><span class="s1">qrcode</span><span class="s2">.</span><span class="s1">QRCodeWriter</span>
+
+<span class="s0">class </span><span class="s1">MainActivity : ComponentActivity</span><span class="s2">() {</span>
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onCreate</span><span class="s2">(</span><span class="s1">savedInstanceState: Bundle?</span><span class="s2">) {</span>
+        <span class="s0">super</span><span class="s2">.</span><span class="s1">onCreate</span><span class="s2">(</span><span class="s1">savedInstanceState</span><span class="s2">)</span>
+        <span class="s1">setContent </span><span class="s2">{</span>
+            <span class="s1">BusinessCardTheme </span><span class="s2">{</span>
+                <span class="s3">// A surface container using the 'background' color from the theme</span>
+                <span class="s1">Surface</span><span class="s2">(</span>
+                    <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxSize</span><span class="s2">(),</span>
+                    <span class="s1">color </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">background</span><span class="s2">)</span>
+                <span class="s2">{</span>
+                    <span class="s1">Logo</span><span class="s2">(</span><span class="s1">name </span><span class="s2">= </span><span class="s4">&quot;Nicole Perkins&quot;</span><span class="s2">, </span><span class="s1">title </span><span class="s2">= </span><span class="s4">&quot;Computer Scientist&quot;</span><span class="s2">)</span>
+                <span class="s2">}</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">ContactInfo</span><span class="s2">(</span><span class="s1">phone: String</span><span class="s2">, </span><span class="s1">email: String</span><span class="s2">, </span><span class="s1">modifier: Modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">) {</span>
+    <span class="s1">Column</span><span class="s2">(</span>
+        <span class="s1">verticalArrangement </span><span class="s2">= </span><span class="s1">Arrangement</span><span class="s2">.</span><span class="s1">Center</span><span class="s2">,</span>
+        <span class="s1">modifier </span><span class="s2">= </span><span class="s1">modifier</span><span class="s2">) {</span>
+        <span class="s1">Text</span><span class="s2">(</span>
+            <span class="s1">text </span><span class="s2">= </span><span class="s1">phone</span><span class="s2">,</span>
+            <span class="s1">fontSize </span><span class="s2">= </span><span class="s5">10</span><span class="s2">.</span><span class="s1">sp</span><span class="s2">,</span>
+            <span class="s1">lineHeight </span><span class="s2">= </span><span class="s5">80</span><span class="s2">.</span><span class="s1">sp</span><span class="s2">,</span>
+            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">align</span><span class="s2">(</span><span class="s1">alignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterHorizontally</span><span class="s2">)</span>
+            <span class="s2">)</span>
+        <span class="s1">Text</span><span class="s2">(</span>
+            <span class="s1">text </span><span class="s2">= </span><span class="s1">email</span><span class="s2">,</span>
+            <span class="s1">fontSize </span><span class="s2">= </span><span class="s5">10</span><span class="s2">.</span><span class="s1">sp</span><span class="s2">,</span>
+            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span>
+                <span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">10</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+                <span class="s2">.</span><span class="s1">align</span><span class="s2">(</span><span class="s1">alignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterHorizontally</span><span class="s2">)</span>
+        <span class="s2">)</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">Logo</span><span class="s2">(</span><span class="s1">name: String</span><span class="s2">, </span><span class="s1">title: String</span><span class="s2">, </span><span class="s1">modifier: Modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">) {</span>
+    <span class="s0">val </span><span class="s1">image </span><span class="s2">= </span><span class="s1">painterResource</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">drawable</span><span class="s2">.</span><span class="s1">_0220225_104934</span><span class="s2">)</span>
+    <span class="s1">Box</span><span class="s2">(</span>
+        <span class="s1">modifier </span><span class="s2">= </span><span class="s1">modifier</span><span class="s2">.</span><span class="s1">fillMaxSize</span><span class="s2">(),</span>
+        <span class="s1">contentAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">TopCenter</span>
+    <span class="s2">) {</span>
+        <span class="s1">Column</span><span class="s2">(</span>
+            <span class="s1">horizontalAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterHorizontally</span><span class="s2">,</span>
+            <span class="s1">verticalArrangement </span><span class="s2">= </span><span class="s1">Arrangement</span><span class="s2">.</span><span class="s1">Top</span>
+        <span class="s2">) {</span>
+            <span class="s1">Image</span><span class="s2">(</span>
+                <span class="s1">painter </span><span class="s2">= </span><span class="s1">image</span><span class="s2">,</span>
+                <span class="s1">contentDescription </span><span class="s2">= </span><span class="s0">null</span><span class="s2">,</span>
+                <span class="s1">contentScale </span><span class="s2">= </span><span class="s1">ContentScale</span><span class="s2">.</span><span class="s1">Crop</span><span class="s2">,</span>
+                <span class="s1">alpha </span><span class="s2">= </span><span class="s5">0.9f</span><span class="s2">,</span>
+                <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span>
+                    <span class="s2">.</span><span class="s1">size</span><span class="s2">(</span><span class="s5">160</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">) </span><span class="s3">// Adjust size here</span>
+                    <span class="s2">.</span><span class="s1">graphicsLayer</span><span class="s2">(</span><span class="s1">rotationZ </span><span class="s2">= </span><span class="s5">90f</span><span class="s2">) </span><span class="s3">// Rotate the image</span>
+                    <span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s1">start </span><span class="s2">= </span><span class="s5">5</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+                    <span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s1">top </span><span class="s2">= </span><span class="s5">40</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">) </span><span class="s3">// Center the image at the top</span>
+                    <span class="s2">.</span><span class="s1">layout </span><span class="s2">{ </span><span class="s1">measurable</span><span class="s2">, </span><span class="s1">constraints </span><span class="s2">-&gt;</span>
+                        <span class="s0">val </span><span class="s1">placeable </span><span class="s2">= </span><span class="s1">measurable</span><span class="s2">.</span><span class="s1">measure</span><span class="s2">(</span><span class="s1">constraints</span><span class="s2">)</span>
+                        <span class="s1">layout</span><span class="s2">(</span><span class="s1">placeable</span><span class="s2">.</span><span class="s1">width</span><span class="s2">, </span><span class="s1">placeable</span><span class="s2">.</span><span class="s1">height</span><span class="s2">) {</span>
+                            <span class="s1">placeable</span><span class="s2">.</span><span class="s1">placeRelative</span><span class="s2">(</span><span class="s1">x </span><span class="s2">= </span><span class="s5">20</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">.</span><span class="s1">roundToPx</span><span class="s2">(), </span><span class="s1">y </span><span class="s2">= -</span><span class="s5">50</span><span class="s2">)</span>
+                        <span class="s2">}</span>
+                    <span class="s2">}</span>
+            <span class="s2">)</span>
+            <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s5">20</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)) </span><span class="s3">// Add some space between image and text</span>
+            <span class="s1">Text</span><span class="s2">(</span><span class="s1">text </span><span class="s2">= </span><span class="s1">name</span><span class="s2">, </span><span class="s1">fontSize </span><span class="s2">= </span><span class="s5">24</span><span class="s2">.</span><span class="s1">sp</span><span class="s2">, </span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+            <span class="s1">Text</span><span class="s2">(</span><span class="s1">text </span><span class="s2">= </span><span class="s1">title</span><span class="s2">, </span><span class="s1">fontSize </span><span class="s2">= </span><span class="s5">16</span><span class="s2">.</span><span class="s1">sp</span><span class="s2">, </span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+            <span class="s1">ContactInfo</span><span class="s2">(</span>
+                <span class="s1">phone </span><span class="s2">= </span><span class="s4">&quot;phone: (816) 551-7963&quot;</span><span class="s2">,</span>
+                <span class="s1">email </span><span class="s2">= </span><span class="s4">&quot;email: nnewell@missouriwestern.edu&quot;</span><span class="s2">,</span>
+                <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+            <span class="s2">)</span>
+            <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+            <span class="s1">QRCode</span><span class="s2">(</span><span class="s4">&quot;https://www.linkedin.com/in/nicole-newell-21525714b/&quot;</span><span class="s2">)</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">QRCode</span><span class="s2">(</span><span class="s1">url: String</span><span class="s2">, </span><span class="s1">modifier: Modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">) {</span>
+    <span class="s0">val </span><span class="s1">size </span><span class="s2">= </span><span class="s5">150</span><span class="s2">.</span><span class="s1">dp</span>
+    <span class="s0">val </span><span class="s1">bitmap </span><span class="s2">= </span><span class="s1">generateQRCode</span><span class="s2">(</span><span class="s1">url</span><span class="s2">)</span>
+    <span class="s1">bitmap?</span><span class="s2">.</span><span class="s1">let </span><span class="s2">{</span>
+        <span class="s1">Image</span><span class="s2">(</span>
+            <span class="s1">bitmap </span><span class="s2">= </span><span class="s1">it</span><span class="s2">.</span><span class="s1">asImageBitmap</span><span class="s2">(),</span>
+            <span class="s1">contentDescription </span><span class="s2">= </span><span class="s4">&quot;QR Code&quot;</span><span class="s2">,</span>
+            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">modifier</span><span class="s2">.</span><span class="s1">size</span><span class="s2">(</span><span class="s1">size</span><span class="s2">)</span>
+        <span class="s2">)</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+<span class="s0">fun </span><span class="s1">generateQRCode</span><span class="s2">(</span><span class="s1">text: String</span><span class="s2">)</span><span class="s1">: Bitmap? </span><span class="s2">{</span>
+    <span class="s0">return try </span><span class="s2">{</span>
+        <span class="s0">val </span><span class="s1">writer </span><span class="s2">= </span><span class="s1">QRCodeWriter</span><span class="s2">()</span>
+        <span class="s0">val </span><span class="s1">bitMatrix </span><span class="s2">= </span><span class="s1">writer</span><span class="s2">.</span><span class="s1">encode</span><span class="s2">(</span><span class="s1">text</span><span class="s2">, </span><span class="s1">BarcodeFormat</span><span class="s2">.</span><span class="s1">QR_CODE</span><span class="s2">, </span><span class="s5">512</span><span class="s2">, </span><span class="s5">512</span><span class="s2">)</span>
+        <span class="s0">val </span><span class="s1">width </span><span class="s2">= </span><span class="s1">bitMatrix</span><span class="s2">.</span><span class="s1">width</span>
+        <span class="s0">val </span><span class="s1">height </span><span class="s2">= </span><span class="s1">bitMatrix</span><span class="s2">.</span><span class="s1">height</span>
+        <span class="s0">val </span><span class="s1">bitmap </span><span class="s2">= </span><span class="s1">Bitmap</span><span class="s2">.</span><span class="s1">createBitmap</span><span class="s2">(</span><span class="s1">width</span><span class="s2">, </span><span class="s1">height</span><span class="s2">, </span><span class="s1">Bitmap</span><span class="s2">.</span><span class="s1">Config</span><span class="s2">.</span><span class="s1">RGB_565</span><span class="s2">)</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s1">x </span><span class="s0">in </span><span class="s5">0 </span><span class="s1">until width</span><span class="s2">) {</span>
+            <span class="s0">for </span><span class="s2">(</span><span class="s1">y </span><span class="s0">in </span><span class="s5">0 </span><span class="s1">until height</span><span class="s2">) {</span>
+                <span class="s1">bitmap</span><span class="s2">.</span><span class="s1">setPixel</span><span class="s2">(</span><span class="s1">x</span><span class="s2">, </span><span class="s1">y</span><span class="s2">, </span><span class="s0">if </span><span class="s2">(</span><span class="s1">bitMatrix</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">x</span><span class="s2">, </span><span class="s1">y</span><span class="s2">)) </span><span class="s1">android</span><span class="s2">.</span><span class="s1">graphics</span><span class="s2">.</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">BLACK </span><span class="s0">else </span><span class="s1">android</span><span class="s2">.</span><span class="s1">graphics</span><span class="s2">.</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">WHITE</span><span class="s2">)</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+        <span class="s1">bitmap</span>
+    <span class="s2">} </span><span class="s1">catch </span><span class="s2">(</span><span class="s1">e: Exception</span><span class="s2">) {</span>
+        <span class="s0">null</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+<span class="s1">@Preview</span><span class="s2">(</span><span class="s1">showBackground </span><span class="s2">= </span><span class="s0">true</span><span class="s2">)</span>
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">BusinessCardPreview</span><span class="s2">() {</span>
+    <span class="s1">BusinessCardTheme </span><span class="s2">{</span>
+        <span class="s1">Logo</span><span class="s2">(</span><span class="s4">&quot;Nicole Perkins&quot;</span><span class="s2">, </span><span class="s4">&quot;Computer Scientist&quot;</span><span class="s2">)</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>
