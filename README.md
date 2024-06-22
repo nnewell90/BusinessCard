@@ -1,4 +1,4 @@
-#Personal Business Card App
+# Personal Business Card App
 
 This Android Studio application serves as a personal business card, providing my contact information, job industry 
 preferences, and a QR code linking directly to my LinkedIn profile. This profile contains all the relevant information an 
